@@ -1,45 +1,27 @@
-# ===== AI 服務規則列表（已去除香港可用項：Copilot、Bing、Grok） =====
+[Custom AI Rules]
+; === 合併 AI-HK.list + AI1.list + AI2.list 後去重版本 ===
+; === 已剔除可直連 (香港可用) 的 Copilot / Grok ===
+; === 建議放在 Global / 國外 規則前 ===
 
-# 🧠 OpenAI 系列
-DOMAIN-SUFFIX,chatgpt.com            # ChatGPT 主站
-DOMAIN-SUFFIX,oaistatic.com          # ChatGPT 靜態資源
-DOMAIN-SUFFIX,oaiusercontent.com     # ChatGPT 上傳內容資源
-DOMAIN-SUFFIX,openai.com             # OpenAI 官方網站
-DOMAIN-SUFFIX,openaiapi-site.azureedge.net # OpenAI API 靜態資源
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,dify.ai
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,api.openai.com
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,stability.ai
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,runwayml.com
+DOMAIN-SUFFIX,together.ai
+DOMAIN-SUFFIX,cohere.ai
+DOMAIN-SUFFIX,ai.com
+DOMAIN-SUFFIX,huggingface.co
 
-# 🛡 安全驗證 & 第三方服務
-DOMAIN-SUFFIX,auth0.com              # Auth0 登錄驗證
-DOMAIN-SUFFIX,client-api.arkoselabs.com # Arkose Labs 人機驗證
-DOMAIN-SUFFIX,identrust.com          # IdenTrust CA 驗證
-DOMAIN-SUFFIX,intercom.io            # Intercom 在線客服
-DOMAIN-SUFFIX,intercomcdn.com        # Intercom CDN
-DOMAIN-SUFFIX,events.statsigapi.net  # Statsig 事件統計
-DOMAIN-SUFFIX,featuregates.org       # Feature Gates 功能開關
-DOMAIN-SUFFIX,sentry.io              # Sentry 錯誤上報
-DOMAIN-SUFFIX,stripe.com             # Stripe 支付
-
-# 🤖 Google Bard / Gemini 系列
-DOMAIN-SUFFIX,bard.google.com        # Google Bard
-DOMAIN-SUFFIX,gemini.google.com      # Google Gemini
-DOMAIN-SUFFIX,makersuite.google.com  # Google AI MakerSuite
-DOMAIN-SUFFIX,googleapis.com         # Google API
-DOMAIN-SUFFIX,googleapis.cn          # Google API 中國域名
-DOMAIN-SUFFIX,gstatic.com            # Google 靜態資源
-
-# 🧠 Anthropic Claude 系列
-DOMAIN-SUFFIX,anthropic.com          # Claude 主站
-DOMAIN-SUFFIX,claude.ai              # Claude 官方域名
-
-# 🧪 其他 AI / 測試服務（已移除 Grok）
-DOMAIN-SUFFIX,circumlunar.space      # AI 測試域
-DOMAIN-SUFFIX,vulpes.one              # AI 測試域
-DOMAIN-SUFFIX,mozz.us                 # AI 測試域
-DOMAIN-SUFFIX,conman.org              # AI 測試域
-DOMAIN-SUFFIX,bortzmeyer.org          # AI 測試域
-DOMAIN-SUFFIX,groq.com                # Groq AI 加速
-DOMAIN-SUFFIX,difyai.com              # Dify AI 平台
-DOMAIN-SUFFIX,genspark.ai             # GenSpark AI
-# DOMAIN-SUFFIX,grok.com               # ❌ Grok（香港可用，排除）
-# DOMAIN-SUFFIX,x.com                  # ❌ X / Twitter（Grok 整合，香港可用，排除）
-# DOMAIN-SUFFIX,x.ai                   # ❌ X.AI（香港可用，排除）
-DOMAIN-SUFFIX,signalr.net             # SignalR 實時通訊
+; 若有額外新 AI 域名，直接新增在下方
