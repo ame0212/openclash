@@ -1,4 +1,5 @@
-DOMAIN-SUFFIX,openai.com
-DOMAIN-SUFFIX,chatgpt.com
-DOMAIN-SUFFIX,anthropic.com
-DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,openai.com        # OpenAI（ChatGPT、API）
+DOMAIN-SUFFIX,chatgpt.com       # ChatGPT 官方網站
+DOMAIN-SUFFIX,anthropic.com     # Anthropic（Claude 系列 AI）
+DOMAIN-SUFFIX,perplexity.ai     # Perplexity AI（AI 搜尋與問答）
+DOMAIN-SUFFIX,gemini.google.com # Google Gemini（AI 聊天與創作）
