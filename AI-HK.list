@@ -7,7 +7,6 @@ DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,gemini.google.com
 DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,groq.com
 DOMAIN-SUFFIX,dify.ai
 DOMAIN-SUFFIX,perplexity.ai
