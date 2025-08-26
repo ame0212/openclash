@@ -1,11 +1,34 @@
-DOMAIN-SUFFIX,openai.com        # OpenAI（ChatGPT、API）
-DOMAIN-SUFFIX,chatgpt.com       # ChatGPT 官方網站
-DOMAIN-SUFFIX,anthropic.com     # Anthropic（Claude 系列 AI）
-DOMAIN-SUFFIX,perplexity.ai     # Perplexity AI（AI 搜尋與問答）
-DOMAIN-SUFFIX,gemini.google.com # Google Gemini（AI 聊天與創作）
-DOMAIN-SUFFIX,anthropic.com       # Claude
-DOMAIN-SUFFIX,claude.ai           # Claude
-DOMAIN-SUFFIX,gemini.google.com   # Gemini
-DOMAIN-SUFFIX,bard.google.com     # Bard 舊入口
-DOMAIN-KEYWORD,gemini             # 防止漏匹配
+# === Claude / Anthropic ===
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+
+# === Google Gemini / Bard ===
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,ai.googleusercontent.com
+DOMAIN-KEYWORD,gemini
+
+# === OpenAI / ChatGPT ===
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-KEYWORD,chatgpt
+
+# === Microsoft Copilot ===
+DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-KEYWORD,copilot
+
+# === Midjourney ===
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,cdn.midjourney.com
+
+# === DeepL ===
+DOMAIN-SUFFIX,deepl.com
+DOMAIN-SUFFIX,deepl.io
+
+# === 其他常見 AI 平台 ===
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,runwayml.com
+DOMAIN-SUFFIX,stability.ai
+DOMAIN-SUFFIX,leonardo.ai
+DOMAIN-SUFFIX,pi.ai
