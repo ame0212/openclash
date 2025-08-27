@@ -1,262 +1,625 @@
-port: 7890
-socks-port: 7891
+mixed-port: 7890
 allow-lan: true
+bind-address: '*'
 mode: rule
 log-level: info
-external-controller: 127.0.0.1:9090
-
-proxy-providers:
-  SUB:
-    type: http
-    url: "https://sub0530.wdyserver.com/cgi-bin/get/api/domain/ip/access?token=c5148023bb5529457d00bf8a2ba59564"
-    interval: 3600
-    path: ./providers/sub.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-rule-providers:
-  AI-HK:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/AI-HK.list
-    url: https://raw.githubusercontent.com/ame0212/openclash/refs/heads/main/AI-HK.list
-
-  AI1:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/AI1.list
-    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list
-
-  AI2:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/AI2.list
-    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI2.list
-
-  TikTok:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/TikTok.list
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
-
-  Global-Check:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/Check.list
-    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
-
-  Global-Proxy:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/Proxy.list
-    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
-
-  Global:
-    type: http
-    behavior: classical
-    format: text
-    interval: 86400
-    path: ./ruleset/Global.list
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
-
+external-controller: '127.0.0.1:9090'
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29, 180.76.76.76, 1.1.1.1]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: [223.5.5.5, 119.29.29.29]
+proxies:
+    - { name: '剩余流量：89.6 GB', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '距离下次重置剩余：8 天', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 套餐到期：2026-06-04, type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 300G以上套餐包含家宽', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 不能用就更新', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 🌐 WanDaYun.Com 🌐', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港01', type: trojan, server: n0709.vo0.site, port: 26766, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港06', type: trojan, server: n0709.vo0.site, port: 30126, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港07', type: trojan, server: n0709.vo0.site, port: 16592, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港11', type: trojan, server: n0709.vo0.site, port: 24557, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港12', type: trojan, server: n0709.vo0.site, port: 24184, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港13', type: trojan, server: n0709.vo0.site, port: 61142, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港14', type: trojan, server: n0709.vo0.site, port: 42492, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港15', type: trojan, server: n0709.vo0.site, port: 61110, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港16', type: trojan, server: n0709.vo0.site, port: 33935, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港17', type: trojan, server: n0709.vo0.site, port: 28249, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港18', type: trojan, server: n0709.vo0.site, port: 23282, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港19', type: trojan, server: n0709.vo0.site, port: 62250, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇭🇰 香港家宽HKT-1', type: trojan, server: n0709.vo0.site, port: 18950, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: bvc.bilivideo.com, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡01', type: trojan, server: n0709.vo0.site, port: 45787, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡02', type: trojan, server: n0709.vo0.site, port: 41166, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡03', type: ss, server: n0709.vo0.site, port: 36008, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇸🇬 新加坡04', type: trojan, server: n0709.vo0.site, port: 36009, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡05', type: trojan, server: n0709.vo0.site, port: 29956, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡06', type: trojan, server: n0709.vo0.site, port: 20259, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡07', type: trojan, server: n0709.vo0.site, port: 52977, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡08', type: trojan, server: n0709.vo0.site, port: 36260, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡09', type: trojan, server: n0709.vo0.site, port: 31585, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇸🇬 新加坡10', type: trojan, server: n0709.vo0.site, port: 42545, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇯🇵 日本01', type: ss, server: n0709.vo0.site, port: 46976, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇯🇵 日本02', type: trojan, server: n0709.vo0.site, port: 38066, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇯🇵 日本04', type: trojan, server: n0709.vo0.site, port: 15016, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇯🇵 日本05', type: trojan, server: n0709.vo0.site, port: 59477, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇯🇵 日本06', type: trojan, server: n0709.vo0.site, port: 44100, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇯🇵 日本07', type: trojan, server: n0709.vo0.site, port: 19266, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇯🇵 日本08', type: trojan, server: n0709.vo0.site, port: 37473, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇯🇵 日本09', type: trojan, server: n0709.vo0.site, port: 34976, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇹🇼 台湾01', type: trojan, server: n0709.vo0.site, port: 20803, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇹🇼 台湾02', type: trojan, server: n0709.vo0.site, port: 13121, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇹🇼 台湾03', type: trojan, server: n0709.vo0.site, port: 28035, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇹🇼 台湾04', type: trojan, server: n0709.vo0.site, port: 52134, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇹🇼 台湾05', type: trojan, server: n0709.vo0.site, port: 54325, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇰🇷 韩国01', type: ss, server: n0709.vo0.site, port: 12474, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇰🇷 韩国02', type: trojan, server: n0709.vo0.site, port: 35121, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: v1.kwaicdn.com, skip-cert-verify: true }
+    - { name: '🇮🇳 印度01', type: trojan, server: n0709.vo0.site, port: 21994, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇮🇳 印度02', type: ss, server: n0709.vo0.site, port: 22290, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇮🇳 印度03', type: ss, server: n0709.vo0.site, port: 16129, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇮🇳 印度04', type: trojan, server: n0709.vo0.site, port: 26236, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇮🇳 印度05', type: ss, server: n0709.vo0.site, port: 49033, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇻🇳 越南01', type: ss, server: n0709.vo0.site, port: 17159, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇻🇳 越南02', type: trojan, server: n0709.vo0.site, port: 31794, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇻🇳 越南03', type: trojan, server: n0709.vo0.site, port: 52026, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇻🇳 越南04', type: trojan, server: n0709.vo0.site, port: 50290, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇻🇳 越南05', type: trojan, server: n0709.vo0.site, port: 39477, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇻🇳 越南06', type: trojan, server: n0709.vo0.site, port: 19606, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇻🇳 越南07', type: trojan, server: n0709.vo0.site, port: 53381, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇺🇸 美国01', type: trojan, server: n0709.vo0.site, port: 57281, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇺🇸 美国02', type: trojan, server: n0709.vo0.site, port: 56306, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇺🇸 美国03', type: trojan, server: n0709.vo0.site, port: 50977, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇺🇸 美国04', type: ss, server: n0709.vo0.site, port: 57366, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇺🇸 美国05', type: trojan, server: n0709.vo0.site, port: 38185, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇺🇸 美国06', type: ss, server: n0709.vo0.site, port: 52649, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇺🇸 美国07', type: ss, server: n0709.vo0.site, port: 57999, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇩🇪 德国01', type: trojan, server: n0709.vo0.site, port: 45367, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: bvc.bilivideo.com, skip-cert-verify: true }
+    - { name: '🇲🇴 澳门', type: trojan, server: n0709.vo0.site, port: 17684, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇹🇭 泰国1', type: trojan, server: n0709.vo0.site, port: 15516, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: '🇲🇾 马来西亚 【2倍】', type: ss, server: n0709.vo0.site, port: 19094, cipher: aes-128-gcm, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true }
+    - { name: '🇯🇵 日本【家宽】', type: trojan, server: n0709.vo0.site, port: 19401, password: 9f089d6f-b5cd-4a1f-9a7d-d5e3dd5e56ac, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
 proxy-groups:
-  - name: "👽 AI-HK"
-    type: select
-    proxies:
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - DIRECT
-      - REJECT
-
-  - name: "👽 AI1"
-    type: select
-    proxies:
-      - DIRECT
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - REJECT
-
-  - name: "👽 AI2"
-    type: select
-    proxies:
-      - DIRECT
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - REJECT
-
-  - name: "👯‍♂️ TikTok"
-    type: select
-    proxies:
-      - DIRECT
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - REJECT
-
-  - name: "🌍 国外"
-    type: select
-    proxies:
-      - DIRECT
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - REJECT
-
-  - name: "➡️ 国内"
-    type: select
-    proxies:
-      - DIRECT
-      - "所有-自动"
-      - "港台日新韩-自动"
-      - "台日新韩-自动"
-      - "台湾-自动"
-      - "日本-自动"
-      - "新加坡-自动"
-      - "韩国-自动"
-      - "美国-自动"
-      - "德国-自动"
-      - "泰国-自动"
-      - "印度-自动"
-      - "越南-自动"
-      - "马来西亚-自动"
-      - "澳门-自动"
-      - "香港-自动"
-      - "其他-自动"
-      - REJECT
-
-  - name: "所有-自动"
-    type: url-test
-    use: [SUB]
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "港台日新韩-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(香港|HK|Hong Kong|🇭🇰|台湾|TW|Taiwan|🇹🇼|日本|JP|🇯🇵|新加坡|SG|🇸🇬|韩国|KR|🇰🇷)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "台日新韩-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(台湾|TW|Taiwan|🇹🇼|日本|JP|🇯🇵|新加坡|SG|🇸🇬|韩国|KR|🇰🇷)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "香港-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(香港|HK|Hong Kong|🇭🇰)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "台湾-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(台湾|TW|Taiwan|🇹🇼)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "日本-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(日本|JP|🇯🇵)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
-
-  - name: "新加坡-自动"
-    type: url-test
-    use: [SUB]
-    filter: "(新加坡|SG|🇸🇬)"
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    tolerance: 100
+    - { name: 万达云☁️, type: select, proxies: [自动选择, 故障转移, '剩余流量：89.6 GB', '距离下次重置剩余：8 天', 套餐到期：2026-06-04, '🇭🇰 300G以上套餐包含家宽', '🇭🇰 不能用就更新', '🇭🇰 🌐 WanDaYun.Com 🌐', '🇭🇰 香港01', '🇭🇰 香港06', '🇭🇰 香港07', '🇭🇰 香港11', '🇭🇰 香港12', '🇭🇰 香港13', '🇭🇰 香港14', '🇭🇰 香港15', '🇭🇰 香港16', '🇭🇰 香港17', '🇭🇰 香港18', '🇭🇰 香港19', '🇭🇰 香港家宽HKT-1', '🇸🇬 新加坡01', '🇸🇬 新加坡02', '🇸🇬 新加坡03', '🇸🇬 新加坡04', '🇸🇬 新加坡05', '🇸🇬 新加坡06', '🇸🇬 新加坡07', '🇸🇬 新加坡08', '🇸🇬 新加坡09', '🇸🇬 新加坡10', '🇯🇵 日本01', '🇯🇵 日本02', '🇯🇵 日本04', '🇯🇵 日本05', '🇯🇵 日本06', '🇯🇵 日本07', '🇯🇵 日本08', '🇯🇵 日本09', '🇹🇼 台湾01', '🇹🇼 台湾02', '🇹🇼 台湾03', '🇹🇼 台湾04', '🇹🇼 台湾05', '🇰🇷 韩国01', '🇰🇷 韩国02', '🇮🇳 印度01', '🇮🇳 印度02', '🇮🇳 印度03', '🇮🇳 印度04', '🇮🇳 印度05', '🇻🇳 越南01', '🇻🇳 越南02', '🇻🇳 越南03', '🇻🇳 越南04', '🇻🇳 越南05', '🇻🇳 越南06', '🇻🇳 越南07', '🇺🇸 美国01', '🇺🇸 美国02', '🇺🇸 美国03', '🇺🇸 美国04', '🇺🇸 美国05', '🇺🇸 美国06', '🇺🇸 美国07', '🇩🇪 德国01', '🇲🇴 澳门', '🇹🇭 泰国1', '🇲🇾 马来西亚 【2倍】', '🇯🇵 日本【家宽】'] }
+    - { name: 自动选择, type: url-test, proxies: ['剩余流量：89.6 GB', '距离下次重置剩余：8 天', 套餐到期：2026-06-04, '🇭🇰 300G以上套餐包含家宽', '🇭🇰 不能用就更新', '🇭🇰 🌐 WanDaYun.Com 🌐', '🇭🇰 香港01', '🇭🇰 香港06', '🇭🇰 香港07', '🇭🇰 香港11', '🇭🇰 香港12', '🇭🇰 香港13', '🇭🇰 香港14', '🇭🇰 香港15', '🇭🇰 香港16', '🇭🇰 香港17', '🇭🇰 香港18', '🇭🇰 香港19', '🇭🇰 香港家宽HKT-1', '🇸🇬 新加坡01', '🇸🇬 新加坡02', '🇸🇬 新加坡03', '🇸🇬 新加坡04', '🇸🇬 新加坡05', '🇸🇬 新加坡06', '🇸🇬 新加坡07', '🇸🇬 新加坡08', '🇸🇬 新加坡09', '🇸🇬 新加坡10', '🇯🇵 日本01', '🇯🇵 日本02', '🇯🇵 日本04', '🇯🇵 日本05', '🇯🇵 日本06', '🇯🇵 日本07', '🇯🇵 日本08', '🇯🇵 日本09', '🇹🇼 台湾01', '🇹🇼 台湾02', '🇹🇼 台湾03', '🇹🇼 台湾04', '🇹🇼 台湾05', '🇰🇷 韩国01', '🇰🇷 韩国02', '🇮🇳 印度01', '🇮🇳 印度02', '🇮🇳 印度03', '🇮🇳 印度04', '🇮🇳 印度05', '🇻🇳 越南01', '🇻🇳 越南02', '🇻🇳 越南03', '🇻🇳 越南04', '🇻🇳 越南05', '🇻🇳 越南06', '🇻🇳 越南07', '🇺🇸 美国01', '🇺🇸 美国02', '🇺🇸 美国03', '🇺🇸 美国04', '🇺🇸 美国05', '🇺🇸 美国06', '🇺🇸 美国07', '🇩🇪 德国01', '🇲🇴 澳门', '🇹🇭 泰国1', '🇲🇾 马来西亚 【2倍】', '🇯🇵 日本【家宽】'], url: 'http://cp.cloudflare.com/', interval: 86400 }
+    - { name: 故障转移, type: fallback, proxies: ['剩余流量：89.6 GB', '距离下次重置剩余：8 天', 套餐到期：2026-06-04, '🇭🇰 300G以上套餐包含家宽', '🇭🇰 不能用就更新', '🇭🇰 🌐 WanDaYun.Com 🌐', '🇭🇰 香港01', '🇭🇰 香港06', '🇭🇰 香港07', '🇭🇰 香港11', '🇭🇰 香港12', '🇭🇰 香港13', '🇭🇰 香港14', '🇭🇰 香港15', '🇭🇰 香港16', '🇭🇰 香港17', '🇭🇰 香港18', '🇭🇰 香港19', '🇭🇰 香港家宽HKT-1', '🇸🇬 新加坡01', '🇸🇬 新加坡02', '🇸🇬 新加坡03', '🇸🇬 新加坡04', '🇸🇬 新加坡05', '🇸🇬 新加坡06', '🇸🇬 新加坡07', '🇸🇬 新加坡08', '🇸🇬 新加坡09', '🇸🇬 新加坡10', '🇯🇵 日本01', '🇯🇵 日本02', '🇯🇵 日本04', '🇯🇵 日本05', '🇯🇵 日本06', '🇯🇵 日本07', '🇯🇵 日本08', '🇯🇵 日本09', '🇹🇼 台湾01', '🇹🇼 台湾02', '🇹🇼 台湾03', '🇹🇼 台湾04', '🇹🇼 台湾05', '🇰🇷 韩国01', '🇰🇷 韩国02', '🇮🇳 印度01', '🇮🇳 印度02', '🇮🇳 印度03', '🇮🇳 印度04', '🇮🇳 印度05', '🇻🇳 越南01', '🇻🇳 越南02', '🇻🇳 越南03', '🇻🇳 越南04', '🇻🇳 越南05', '🇻🇳 越南06', '🇻🇳 越南07', '🇺🇸 美国01', '🇺🇸 美国02', '🇺🇸 美国03', '🇺🇸 美国04', '🇺🇸 美国05', '🇺🇸 美国06', '🇺🇸 美国07', '🇩🇪 德国01', '🇲🇴 澳门', '🇹🇭 泰国1', '🇲🇾 马来西亚 【2倍】', '🇯🇵 日本【家宽】'], url: 'http://cp.cloudflare.com/', interval: 7200 }
+rules:
+    - 'DOMAIN-KEYWORD,ic.adobe.io,REJECT'
+    - 'DOMAIN-KEYWORD,gw8gfjbs05.adobe.io,REJECT'
+    - 'DOMAIN-KEYWORD,2ftem87osk.adobe.io,REJECT'
+    - 'DOMAIN-KEYWORD,openai,万达云☁️'
+    - 'DOMAIN-SUFFIX,auth0.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,challenges.cloudflare.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,chatgpt.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,client-api.arkoselabs.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,events.statsigapi.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,featuregates.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,identrust.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,intercom.io,万达云☁️'
+    - 'DOMAIN-SUFFIX,intercomcdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,oaistatic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,oaiusercontent.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,openai.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,openaiapi-site.azureedge.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,sentry.io,万达云☁️'
+    - 'DOMAIN-SUFFIX,stripe.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,emby.wandayun.xyz,万达云☁️'
+    - 'DOMAIN-SUFFIX,perplexity.ai,万达云☁️'
+    - 'DOMAIN-SUFFIX,rakuten.com.tw,万达云☁️'
+    - 'DOMAIN-SUFFIX,rakuten.tw,万达云☁️'
+    - 'DOMAIN-SUFFIX,services.googleapis.cn,万达云☁️'
+    - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,万达云☁️'
+    - 'DOMAIN,safebrowsing.urlsec.qq.com,DIRECT'
+    - 'DOMAIN,safebrowsing.googleapis.com,DIRECT'
+    - 'DOMAIN,developer.apple.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,digicert.com,万达云☁️'
+    - 'DOMAIN,ocsp.apple.com,万达云☁️'
+    - 'DOMAIN,ocsp.comodoca.com,万达云☁️'
+    - 'DOMAIN,ocsp.usertrust.com,万达云☁️'
+    - 'DOMAIN,ocsp.sectigo.com,万达云☁️'
+    - 'DOMAIN,ocsp.verisign.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,apple-dns.net,万达云☁️'
+    - 'DOMAIN,testflight.apple.com,万达云☁️'
+    - 'DOMAIN,sandbox.itunes.apple.com,万达云☁️'
+    - 'DOMAIN,itunes.apple.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,apps.apple.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blobstore.apple.com,万达云☁️'
+    - 'DOMAIN,cvws.icloud-content.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mzstatic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,itunes.apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,icloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,icloud-content.com,DIRECT'
+    - 'DOMAIN-SUFFIX,me.com,DIRECT'
+    - 'DOMAIN-SUFFIX,aaplimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cdn20.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cdn-apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,akadns.net,DIRECT'
+    - 'DOMAIN-SUFFIX,akamaiedge.net,DIRECT'
+    - 'DOMAIN-SUFFIX,edgekey.net,DIRECT'
+    - 'DOMAIN-SUFFIX,mwcloudcdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,mwcname.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT'
+    - 'DOMAIN-SUFFIX,apple-mapkit.com,DIRECT'
+    - 'DOMAIN,e.crashlytics.com,REJECT'
+    - 'DOMAIN-SUFFIX,126.com,DIRECT'
+    - 'DOMAIN-SUFFIX,126.net,DIRECT'
+    - 'DOMAIN-SUFFIX,127.net,DIRECT'
+    - 'DOMAIN-SUFFIX,163.com,DIRECT'
+    - 'DOMAIN-SUFFIX,360buyimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,36kr.com,DIRECT'
+    - 'DOMAIN-SUFFIX,acfun.tv,DIRECT'
+    - 'DOMAIN-SUFFIX,air-matters.com,DIRECT'
+    - 'DOMAIN-SUFFIX,aixifan.com,DIRECT'
+    - 'DOMAIN-KEYWORD,alicdn,DIRECT'
+    - 'DOMAIN-KEYWORD,alipay,DIRECT'
+    - 'DOMAIN-KEYWORD,taobao,DIRECT'
+    - 'DOMAIN-SUFFIX,amap.com,DIRECT'
+    - 'DOMAIN-SUFFIX,autonavi.com,DIRECT'
+    - 'DOMAIN-KEYWORD,baidu,DIRECT'
+    - 'DOMAIN-SUFFIX,bdimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bdstatic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bilibili.com,DIRECT'
+    - 'DOMAIN-SUFFIX,bilivideo.com,DIRECT'
+    - 'DOMAIN-SUFFIX,caiyunapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,clouddn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cnbeta.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cnbetacdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,cootekservice.com,DIRECT'
+    - 'DOMAIN-SUFFIX,csdn.net,DIRECT'
+    - 'DOMAIN-SUFFIX,ctrip.com,DIRECT'
+    - 'DOMAIN-SUFFIX,dgtle.com,DIRECT'
+    - 'DOMAIN-SUFFIX,dianping.com,DIRECT'
+    - 'DOMAIN-SUFFIX,douban.com,DIRECT'
+    - 'DOMAIN-SUFFIX,doubanio.com,DIRECT'
+    - 'DOMAIN-SUFFIX,duokan.com,DIRECT'
+    - 'DOMAIN-SUFFIX,easou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ele.me,DIRECT'
+    - 'DOMAIN-SUFFIX,feng.com,DIRECT'
+    - 'DOMAIN-SUFFIX,fir.im,DIRECT'
+    - 'DOMAIN-SUFFIX,frdic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,g-cores.com,DIRECT'
+    - 'DOMAIN-SUFFIX,godic.net,DIRECT'
+    - 'DOMAIN-SUFFIX,gtimg.com,DIRECT'
+    - 'DOMAIN,cdn.hockeyapp.net,DIRECT'
+    - 'DOMAIN-SUFFIX,hongxiu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,hxcdn.net,DIRECT'
+    - 'DOMAIN-SUFFIX,iciba.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ifeng.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ifengimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ipip.net,DIRECT'
+    - 'DOMAIN-SUFFIX,iqiyi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,jd.com,DIRECT'
+    - 'DOMAIN-SUFFIX,jianshu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,knewone.com,DIRECT'
+    - 'DOMAIN-SUFFIX,le.com,DIRECT'
+    - 'DOMAIN-SUFFIX,lecloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,lemicp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,licdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,luoo.net,DIRECT'
+    - 'DOMAIN-SUFFIX,meituan.com,DIRECT'
+    - 'DOMAIN-SUFFIX,meituan.net,DIRECT'
+    - 'DOMAIN-SUFFIX,mi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miaopai.com,DIRECT'
+    - 'DOMAIN-SUFFIX,microsoft.com,DIRECT'
+    - 'DOMAIN-SUFFIX,microsoftonline.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miui.com,DIRECT'
+    - 'DOMAIN-SUFFIX,miwifi.com,DIRECT'
+    - 'DOMAIN-SUFFIX,mob.com,DIRECT'
+    - 'DOMAIN-SUFFIX,netease.com,DIRECT'
+    - 'DOMAIN-SUFFIX,office.com,DIRECT'
+    - 'DOMAIN-SUFFIX,office365.com,DIRECT'
+    - 'DOMAIN-KEYWORD,officecdn,DIRECT'
+    - 'DOMAIN-SUFFIX,oschina.net,DIRECT'
+    - 'DOMAIN-SUFFIX,ppsimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,pstatp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qcloud.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qdaily.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qdmm.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qhimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qhres.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qidian.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qihucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiniu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiniucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qiyipic.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qq.com,DIRECT'
+    - 'DOMAIN-SUFFIX,qqurl.com,DIRECT'
+    - 'DOMAIN-SUFFIX,rarbg.to,DIRECT'
+    - 'DOMAIN-SUFFIX,ruguoapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,segmentfault.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sinaapp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,smzdm.com,DIRECT'
+    - 'DOMAIN-SUFFIX,snapdrop.net,DIRECT'
+    - 'DOMAIN-SUFFIX,sogou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sogoucdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,sohu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,soku.com,DIRECT'
+    - 'DOMAIN-SUFFIX,speedtest.net,DIRECT'
+    - 'DOMAIN-SUFFIX,sspai.com,DIRECT'
+    - 'DOMAIN-SUFFIX,suning.com,DIRECT'
+    - 'DOMAIN-SUFFIX,taobao.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tencent.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tenpay.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tianyancha.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tmall.com,DIRECT'
+    - 'DOMAIN-SUFFIX,tudou.com,DIRECT'
+    - 'DOMAIN-SUFFIX,umetrip.com,DIRECT'
+    - 'DOMAIN-SUFFIX,upaiyun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,upyun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,veryzhun.com,DIRECT'
+    - 'DOMAIN-SUFFIX,weather.com,DIRECT'
+    - 'DOMAIN-SUFFIX,weibo.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xiami.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xiami.net,DIRECT'
+    - 'DOMAIN-SUFFIX,xiaomicp.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ximalaya.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xmcdn.com,DIRECT'
+    - 'DOMAIN-SUFFIX,xunlei.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yhd.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yihaodianimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,yinxiang.com,DIRECT'
+    - 'DOMAIN-SUFFIX,ykimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,youdao.com,DIRECT'
+    - 'DOMAIN-SUFFIX,youku.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zealer.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zhihu.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zhimg.com,DIRECT'
+    - 'DOMAIN-SUFFIX,zimuzu.tv,DIRECT'
+    - 'DOMAIN-SUFFIX,zoho.com,DIRECT'
+    - 'DOMAIN-KEYWORD,amazon,万达云☁️'
+    - 'DOMAIN-KEYWORD,google,万达云☁️'
+    - 'DOMAIN-KEYWORD,gmail,万达云☁️'
+    - 'DOMAIN-KEYWORD,youtube,万达云☁️'
+    - 'DOMAIN-KEYWORD,facebook,万达云☁️'
+    - 'DOMAIN-SUFFIX,fb.me,万达云☁️'
+    - 'DOMAIN-SUFFIX,fbcdn.net,万达云☁️'
+    - 'DOMAIN-KEYWORD,twitter,万达云☁️'
+    - 'DOMAIN-KEYWORD,instagram,万达云☁️'
+    - 'DOMAIN-KEYWORD,dropbox,万达云☁️'
+    - 'DOMAIN-SUFFIX,twimg.com,万达云☁️'
+    - 'DOMAIN-KEYWORD,blogspot,万达云☁️'
+    - 'DOMAIN-SUFFIX,youtu.be,万达云☁️'
+    - 'DOMAIN-KEYWORD,whatsapp,万达云☁️'
+    - 'DOMAIN-KEYWORD,admarvel,REJECT'
+    - 'DOMAIN-KEYWORD,admaster,REJECT'
+    - 'DOMAIN-KEYWORD,adsage,REJECT'
+    - 'DOMAIN-KEYWORD,adsmogo,REJECT'
+    - 'DOMAIN-KEYWORD,adsrvmedia,REJECT'
+    - 'DOMAIN-KEYWORD,adwords,REJECT'
+    - 'DOMAIN-KEYWORD,adservice,REJECT'
+    - 'DOMAIN-SUFFIX,appsflyer.com,REJECT'
+    - 'DOMAIN-KEYWORD,domob,REJECT'
+    - 'DOMAIN-SUFFIX,doubleclick.net,REJECT'
+    - 'DOMAIN-KEYWORD,duomeng,REJECT'
+    - 'DOMAIN-KEYWORD,dwtrack,REJECT'
+    - 'DOMAIN-KEYWORD,guanggao,REJECT'
+    - 'DOMAIN-KEYWORD,lianmeng,REJECT'
+    - 'DOMAIN-SUFFIX,mmstat.com,REJECT'
+    - 'DOMAIN-KEYWORD,mopub,REJECT'
+    - 'DOMAIN-KEYWORD,omgmta,REJECT'
+    - 'DOMAIN-KEYWORD,openx,REJECT'
+    - 'DOMAIN-KEYWORD,partnerad,REJECT'
+    - 'DOMAIN-KEYWORD,pingfore,REJECT'
+    - 'DOMAIN-KEYWORD,supersonicads,REJECT'
+    - 'DOMAIN-KEYWORD,uedas,REJECT'
+    - 'DOMAIN-KEYWORD,umeng,REJECT'
+    - 'DOMAIN-KEYWORD,usage,REJECT'
+    - 'DOMAIN-SUFFIX,vungle.com,REJECT'
+    - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
+    - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
+    - 'DOMAIN-SUFFIX,9to5mac.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,abpchina.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,adblockplus.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,adobe.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,akamaized.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,alfredapp.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,amplitude.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ampproject.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,android.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,angularjs.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,aolcdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,apkpure.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,appledaily.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,appshopper.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,appspot.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,arcgis.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,archive.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,armorgames.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,aspnetcdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,att.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,awsstatic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,azureedge.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,azurewebsites.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,bing.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,bintray.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,bit.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,bit.ly,万达云☁️'
+    - 'DOMAIN-SUFFIX,bitbucket.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,bjango.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,bkrtx.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blog.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blogcdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blogger.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blogsmithmedia.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blogspot.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,blogspot.hk,万达云☁️'
+    - 'DOMAIN-SUFFIX,bloomberg.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,box.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,box.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,cachefly.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,chromium.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,cl.ly,万达云☁️'
+    - 'DOMAIN-SUFFIX,cloudflare.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,cloudfront.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,cloudmagic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,cmail19.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,cnet.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,cocoapods.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,comodoca.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,crashlytics.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,culturedcode.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,d.pr,万达云☁️'
+    - 'DOMAIN-SUFFIX,danilo.to,万达云☁️'
+    - 'DOMAIN-SUFFIX,dayone.me,万达云☁️'
+    - 'DOMAIN-SUFFIX,db.tt,万达云☁️'
+    - 'DOMAIN-SUFFIX,deskconnect.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,disq.us,万达云☁️'
+    - 'DOMAIN-SUFFIX,disqus.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,disquscdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,dnsimple.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,docker.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,dribbble.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,droplr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,duckduckgo.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,dueapp.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,dytt8.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,edgecastcdn.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,edgekey.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,edgesuite.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,engadget.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,entrust.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,eurekavpt.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,evernote.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,fabric.io,万达云☁️'
+    - 'DOMAIN-SUFFIX,fast.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,fastly.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,fc2.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,feedburner.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,feedly.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,feedsportal.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,fiftythree.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,firebaseio.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,flexibits.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,flickr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,flipboard.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,g.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,gabia.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,geni.us,万达云☁️'
+    - 'DOMAIN-SUFFIX,gfx.ms,万达云☁️'
+    - 'DOMAIN-SUFFIX,ggpht.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ghostnoteapp.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,git.io,万达云☁️'
+    - 'DOMAIN-KEYWORD,github,万达云☁️'
+    - 'DOMAIN-SUFFIX,globalsign.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,gmodules.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,godaddy.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,golang.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,gongm.in,万达云☁️'
+    - 'DOMAIN-SUFFIX,goo.gl,万达云☁️'
+    - 'DOMAIN-SUFFIX,goodreaders.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,goodreads.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,gravatar.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,gstatic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,gvt0.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,hockeyapp.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,hotmail.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,icons8.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ifixit.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ift.tt,万达云☁️'
+    - 'DOMAIN-SUFFIX,ifttt.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,iherb.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,imageshack.us,万达云☁️'
+    - 'DOMAIN-SUFFIX,img.ly,万达云☁️'
+    - 'DOMAIN-SUFFIX,imgur.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,imore.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,instapaper.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ipn.li,万达云☁️'
+    - 'DOMAIN-SUFFIX,is.gd,万达云☁️'
+    - 'DOMAIN-SUFFIX,issuu.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,itgonglun.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,itun.es,万达云☁️'
+    - 'DOMAIN-SUFFIX,ixquick.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,j.mp,万达云☁️'
+    - 'DOMAIN-SUFFIX,js.revsci.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,jshint.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,jtvnw.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,justgetflux.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,kat.cr,万达云☁️'
+    - 'DOMAIN-SUFFIX,klip.me,万达云☁️'
+    - 'DOMAIN-SUFFIX,libsyn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,linkedin.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,line-apps.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,linode.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,lithium.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,littlehj.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,live.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,live.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,livefilestore.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,llnwd.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,macid.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,macromedia.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,macrumors.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mashable.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mathjax.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,medium.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mega.co.nz,万达云☁️'
+    - 'DOMAIN-SUFFIX,mega.nz,万达云☁️'
+    - 'DOMAIN-SUFFIX,megaupload.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,microsofttranslator.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mindnode.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,mobile01.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,modmyi.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,msedge.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,myfontastic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,name.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,nextmedia.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,nsstatic.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,nssurge.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,nyt.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,nytimes.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,omnigroup.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,onedrive.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,onenote.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ooyala.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,openvpn.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,openwrt.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,orkut.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,osxdaily.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,outlook.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ow.ly,万达云☁️'
+    - 'DOMAIN-SUFFIX,paddleapi.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,parallels.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,parse.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,pdfexpert.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,periscope.tv,万达云☁️'
+    - 'DOMAIN-SUFFIX,pinboard.in,万达云☁️'
+    - 'DOMAIN-SUFFIX,pinterest.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,pixelmator.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,pixiv.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,playpcesor.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,playstation.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,playstation.com.hk,万达云☁️'
+    - 'DOMAIN-SUFFIX,playstation.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,playstationnetwork.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,pushwoosh.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,rime.im,万达云☁️'
+    - 'DOMAIN-SUFFIX,servebom.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,sfx.ms,万达云☁️'
+    - 'DOMAIN-SUFFIX,shadowsocks.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,sharethis.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,shazam.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,skype.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,smartdns万达云☁️.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,smartmailcloud.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,sndcdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,sony.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,soundcloud.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,sourceforge.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,spotify.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,squarespace.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,sstatic.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,st.luluku.pw,万达云☁️'
+    - 'DOMAIN-SUFFIX,stackoverflow.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,startpage.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,staticflickr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,steamcommunity.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,symauth.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,symcb.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,symcd.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tapbots.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tapbots.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,tdesktop.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,techcrunch.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,techsmith.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,thepiratebay.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,theverge.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,time.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,timeinc.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,tiny.cc,万达云☁️'
+    - 'DOMAIN-SUFFIX,tinypic.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tmblr.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,todoist.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,trello.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,trustasiassl.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tumblr.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,tumblr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tweetdeck.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,tweetmarker.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,twitch.tv,万达云☁️'
+    - 'DOMAIN-SUFFIX,txmblr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,typekit.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,ubertags.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ublock.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,ubnt.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ulyssesapp.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,urchin.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,usertrust.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,v.gd,万达云☁️'
+    - 'DOMAIN-SUFFIX,v2ex.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,vimeo.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,vimeocdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,vine.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,vivaldi.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,vox-cdn.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,vsco.co,万达云☁️'
+    - 'DOMAIN-SUFFIX,vultr.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,w.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,w3schools.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,webtype.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wikiwand.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wikileaks.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,wikimedia.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,wikipedia.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wikipedia.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,windows.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,windows.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,wire.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wordpress.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,workflowy.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wp.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wsj.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,wsj.net,万达云☁️'
+    - 'DOMAIN-SUFFIX,xda-developers.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,xeeno.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,xiti.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,yahoo.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,yimg.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,ying.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,yoyo.org,万达云☁️'
+    - 'DOMAIN-SUFFIX,ytimg.com,万达云☁️'
+    - 'DOMAIN-SUFFIX,telegra.ph,万达云☁️'
+    - 'DOMAIN-SUFFIX,telegram.org,万达云☁️'
+    - 'IP-CIDR,91.108.4.0/22,万达云☁️,no-resolve'
+    - 'IP-CIDR,91.108.8.0/21,万达云☁️,no-resolve'
+    - 'IP-CIDR,91.108.16.0/22,万达云☁️,no-resolve'
+    - 'IP-CIDR,91.108.56.0/22,万达云☁️,no-resolve'
+    - 'IP-CIDR,149.154.160.0/20,万达云☁️,no-resolve'
+    - 'IP-CIDR6,2001:67c:4e8::/48,万达云☁️,no-resolve'
+    - 'IP-CIDR6,2001:b28:f23d::/48,万达云☁️,no-resolve'
+    - 'IP-CIDR6,2001:b28:f23f::/48,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.232.181.162/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.241.147.226/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.253.253.226/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.253.255.162/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.253.255.34/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,120.253.255.98/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,180.163.150.162/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,180.163.150.34/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,180.163.151.162/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,180.163.151.34/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,203.208.39.0/24,万达云☁️,no-resolve'
+    - 'IP-CIDR,203.208.40.0/24,万达云☁️,no-resolve'
+    - 'IP-CIDR,203.208.41.0/24,万达云☁️,no-resolve'
+    - 'IP-CIDR,203.208.43.0/24,万达云☁️,no-resolve'
+    - 'IP-CIDR,203.208.50.0/24,万达云☁️,no-resolve'
+    - 'IP-CIDR,220.181.174.162/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,220.181.174.226/32,万达云☁️,no-resolve'
+    - 'IP-CIDR,220.181.174.34/32,万达云☁️,no-resolve'
+    - 'DOMAIN,injections.adguard.org,DIRECT'
+    - 'DOMAIN,local.adguard.org,DIRECT'
+    - 'DOMAIN-SUFFIX,local,DIRECT'
+    - 'IP-CIDR,127.0.0.0/8,DIRECT'
+    - 'IP-CIDR,172.16.0.0/12,DIRECT'
+    - 'IP-CIDR,192.168.0.0/16,DIRECT'
+    - 'IP-CIDR,10.0.0.0/8,DIRECT'
+    - 'IP-CIDR,17.0.0.0/8,DIRECT'
+    - 'IP-CIDR,100.64.0.0/10,DIRECT'
+    - 'IP-CIDR,224.0.0.0/4,DIRECT'
+    - 'IP-CIDR6,fe80::/10,DIRECT'
+    - 'DOMAIN-SUFFIX,cn,DIRECT'
+    - 'DOMAIN-KEYWORD,-cn,DIRECT'
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,万达云☁️'
