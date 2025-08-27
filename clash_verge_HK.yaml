@@ -1,0 +1,262 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxy-providers:
+  SUB:
+    type: http
+    url: "https://sub0530.wdyserver.com/cgi-bin/get/api/domain/ip/access?token=c5148023bb5529457d00bf8a2ba59564"
+    interval: 86400
+    path: ./providers/sub.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+rule-providers:
+  AI-HK:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/AI-HK.list
+    url: https://raw.githubusercontent.com/ame0212/openclash/refs/heads/main/AI-HK.list
+
+  AI1:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/AI1.list
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list
+
+  AI2:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/AI2.list
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI2.list
+
+  TikTok:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/TikTok.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
+
+  Global-Check:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/Check.list
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
+
+  Global-Proxy:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/Proxy.list
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
+
+  Global:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    path: ./ruleset/Global.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
+
+proxy-groups:
+  - name: "👽 AI-HK"
+    type: select
+    proxies:
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - DIRECT
+      - REJECT
+
+  - name: "👽 AI1"
+    type: select
+    proxies:
+      - DIRECT
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - REJECT
+
+  - name: "👽 AI2"
+    type: select
+    proxies:
+      - DIRECT
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - REJECT
+
+  - name: "👯‍♂️ TikTok"
+    type: select
+    proxies:
+      - DIRECT
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - REJECT
+
+  - name: "🌍 国外"
+    type: select
+    proxies:
+      - DIRECT
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - REJECT
+
+  - name: "➡️ 国内"
+    type: select
+    proxies:
+      - DIRECT
+      - "所有-自动"
+      - "港台日新韩-自动"
+      - "台日新韩-自动"
+      - "台湾-自动"
+      - "日本-自动"
+      - "新加坡-自动"
+      - "韩国-自动"
+      - "美国-自动"
+      - "德国-自动"
+      - "泰国-自动"
+      - "印度-自动"
+      - "越南-自动"
+      - "马来西亚-自动"
+      - "澳门-自动"
+      - "香港-自动"
+      - "其他-自动"
+      - REJECT
+
+  - name: "所有-自动"
+    type: url-test
+    use: [SUB]
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "港台日新韩-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(香港|HK|Hong Kong|🇭🇰|台湾|TW|Taiwan|🇹🇼|日本|JP|🇯🇵|新加坡|SG|🇸🇬|韩国|KR|🇰🇷)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "台日新韩-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(台湾|TW|Taiwan|🇹🇼|日本|JP|🇯🇵|新加坡|SG|🇸🇬|韩国|KR|🇰🇷)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "香港-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(香港|HK|Hong Kong|🇭🇰)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "台湾-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(台湾|TW|Taiwan|🇹🇼)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "日本-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(日本|JP|🇯🇵)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
+
+  - name: "新加坡-自动"
+    type: url-test
+    use: [SUB]
+    filter: "(新加坡|SG|🇸🇬)"
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    tolerance: 100
