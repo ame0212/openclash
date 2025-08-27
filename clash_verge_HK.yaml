@@ -9,7 +9,7 @@ proxy-providers:
   SUB:
     type: http
     url: "https://sub0530.wdyserver.com/cgi-bin/get/api/domain/ip/access?token=c5148023bb5529457d00bf8a2ba59564"
-    interval: 86400
+    interval: 3600
     path: ./providers/sub.yaml
     health-check:
       enable: true
