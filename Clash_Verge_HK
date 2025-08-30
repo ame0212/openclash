@@ -445,7 +445,7 @@ function main(config) {
       ...groupBaseOption,
       name: "其他外网",
       type: "select",
-      proxies: ["默认节点", "国内网站", ...proxyGroupsRegionNames],
+      proxies: [ "直连","默认节点","国内网站", ...proxyGroupsRegionNames],
       icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Streaming!CN.png",
     },
     {
