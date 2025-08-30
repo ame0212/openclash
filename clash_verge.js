@@ -43,6 +43,40 @@ const ruleOptions = {
 };
 
 /**
+ * 新增流行AI域名分流規則
+ * 可持續擴充
+ */
+const popularAIDomains = [
+  // OpenAI
+  "DOMAIN-SUFFIX,openai.com,国外AI",
+  "DOMAIN-SUFFIX,chat.openai.com,国外AI",
+  // Google Gemini
+  "DOMAIN-SUFFIX,gemini.google.com,国外AI",
+  "DOMAIN-SUFFIX,ai.google.dev,国外AI",
+  // Anthropic Claude
+  "DOMAIN-SUFFIX,claude.ai,国外AI",
+  "DOMAIN-SUFFIX,anthropic.com,国外AI",
+  // Perplexity
+  "DOMAIN-SUFFIX,perplexity.ai,国外AI",
+  // Groq
+  "DOMAIN-SUFFIX,groq.com,国外AI",
+  "DOMAIN-SUFFIX,groq.cloud,国外AI",
+  // Mistral AI
+  "DOMAIN-SUFFIX,mistral.ai,国外AI",
+  // Meta AI / Llama
+  "DOMAIN-SUFFIX,meta.ai,国外AI",
+  "DOMAIN-SUFFIX,llama.meta.com,国外AI",
+  // OpenRouter
+  "DOMAIN-SUFFIX,openrouter.ai,国外AI",
+  // Poe
+  "DOMAIN-SUFFIX,poe.com,国外AI",
+  // Other popular AI
+  "DOMAIN-SUFFIX,pi.ai,国外AI",
+  "DOMAIN-SUFFIX,character.ai,国外AI",
+  "DOMAIN-SUFFIX,jan.ai,国外AI"
+];
+
+/**
  * 地区配置，通过regex匹配代理节点名称
  * regex会有一定概率误判，自己调整一下吧
  * excludeHighPercentage是排除高倍率节点的开关，只对地区分组有效
@@ -344,7 +378,11 @@ function main(config) {
     udp: true,
   });
 
+  // 新增分流規則：流行AI
   if (ruleOptions.openai) {
+    // 新增流行AI域名
+    rules.push(...popularAIDomains);
+
     rules.push(
       "DOMAIN-SUFFIX,grazie.ai,国外AI",
       "DOMAIN-SUFFIX,grazie.aws.intellij.net,国外AI",
