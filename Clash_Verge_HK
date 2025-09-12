@@ -2,139 +2,51 @@
  * Clash Verge Rev 全局扩展脚本（懒人配置）/ Mihomo Party 覆写脚本
  * URL: https://gist.github.com/dahaha-365/0b8beb613f8d1ee656fe1f21e1a07959
  */
-
-/**
- * 整个脚本的总开关，在Mihomo Party使用的话，请保持为true
- * true = 启用
- * false = 禁用
- */
 const enable = true;
 
-/**
- * 分流规则配置，会自动生成对应的策略组
- * 设置的时候可遵循“最小，可用”原则，把自己不需要的规则全禁用掉，提高效率
- * true = 启用
- * false = 禁用
- */
 const ruleOptions = {
-  openai: true, // 国外AI和GPT
-  tiktok: true, // 国际版抖音
-  tracker: true, // 网络分析和跟踪服务
-  ads: true, // 常见的网络广告
+  openai: true,
+  tiktok: true,
+  tracker: true,
+  ads: true,
 };
 
-/**
- * 新增流行AI域名分流規則
- * 可持續擴充
- */
 const popularAIDomains = [
-  // OpenAI
   "DOMAIN-SUFFIX,openai.com,国外AI",
   "DOMAIN-SUFFIX,chat.openai.com,国外AI",
-  // Google Gemini
   "DOMAIN-SUFFIX,gemini.google.com,国外AI",
   "DOMAIN-SUFFIX,ai.google.dev,国外AI",
-  // Anthropic Claude
   "DOMAIN-SUFFIX,claude.ai,国外AI",
   "DOMAIN-SUFFIX,anthropic.com,国外AI",
-  // Groq
   "DOMAIN-SUFFIX,groq.com,国外AI",
   "DOMAIN-SUFFIX,groq.cloud,国外AI",
-  // Mistral AI
   "DOMAIN-SUFFIX,mistral.ai,国外AI",
-  // Meta AI / Llama
   "DOMAIN-SUFFIX,meta.ai,国外AI",
   "DOMAIN-SUFFIX,llama.meta.com,国外AI",
-  // OpenRouter
   "DOMAIN-SUFFIX,openrouter.ai,国外AI",
-  // Poe
   "DOMAIN-SUFFIX,poe.com,国外AI",
-  // Other popular AI
   "DOMAIN-SUFFIX,pi.ai,国外AI",
   "DOMAIN-SUFFIX,character.ai,国外AI",
   "DOMAIN-SUFFIX,jan.ai,国外AI"
 ];
 
-/**
- * 地区配置，通过regex匹配代理节点名称
- * excludeHighPercentage是排除高倍率节点的开关，只对地区分组有效
- * 倍率大于regions里的ratioLimit值的代理节点会被排除
- */
 const regionOptions = {
   excludeHighPercentage: true,
   regions: [
-    {
-      name: "HK香港",
-      regex: /港|🇭🇰|hk|hongkong|hong kong/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png",
-    },
-    {
-      name: "US美国",
-      regex: /美|🇺🇸|us|united state|america/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png",
-    },
-    {
-      name: "JP日本",
-      regex: /日本|🇯🇵|jp|japan/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png",
-    },
-    {
-      name: "KR韩国",
-      regex: /韩|🇰🇷|kr|korea/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png",
-    },
-    {
-      name: "SG新加坡",
-      regex: /新加坡|🇸🇬|sg|singapore/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png",
-    },
-    {
-      name: "CN中国大陆",
-      regex: /中国|🇨🇳|cn|china/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China_Map.png",
-    },
-    {
-      name: "TW台湾",
-      regex: /台湾|🇹🇼|tw|taiwan|tai wan/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png",
-    },
-    {
-      name: "GB英国",
-      regex: /英|🇬🇧|uk|united kingdom|great britain/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png",
-    },
-    {
-      name: "DE德国",
-      regex: /德国|🇩🇪|de|germany/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png",
-    },
-    {
-      name: "MY马来西亚",
-      regex: /马来|🇲🇾|my|malaysia/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Malaysia.png",
-    },
-    {
-      name: "TK土耳其",
-      regex: /土耳其|🇹🇷|tk|turkey/i,
-      ratioLimit: 2,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Turkey.png",
-    },
+    { name: "HK香港", regex: /港|🇭🇰|hk|hongkong|hong kong/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png" },
+    { name: "US美国", regex: /美|🇺🇸|us|united state|america/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png" },
+    { name: "JP日本", regex: /日本|🇯🇵|jp|japan/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png" },
+    { name: "KR韩国", regex: /韩|🇰🇷|kr|korea/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png" },
+    { name: "SG新加坡", regex: /新加坡|🇸🇬|sg|singapore/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png" },
+    { name: "CN中国大陆", regex: /中国|🇨🇳|cn|china/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China_Map.png" },
+    { name: "TW台湾", regex: /台湾|🇹🇼|tw|taiwan|tai wan/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png" },
+    { name: "GB英国", regex: /英|🇬🇧|uk|united kingdom|great britain/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png" },
+    { name: "DE德国", regex: /德国|🇩🇪|de|germany/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png" },
+    { name: "MY马来西亚", regex: /马来|🇲🇾|my|malaysia/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Malaysia.png" },
+    { name: "TK土耳其", regex: /土耳其|🇹🇷|tk|turkey/i, ratioLimit: 2, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Turkey.png" },
   ],
 };
 
-/**
- * DNS 配置
- */
 const defaultDNS = ["tls://1.12.12.12", "tls://223.5.5.5"];
 const chinaDNS = ["119.29.29.29", "180.184.1.1"];
 const foreignDNS = ["tls://8.8.8.8", "tls://1.1.1.1", "tls://9.9.9.9"];
@@ -159,9 +71,7 @@ const dnsConfig = {
   },
 };
 
-// 规则集通用配置
 const ruleProviderCommon = { type: "http", format: "yaml", interval: 86400 };
-// 代理组通用配置
 const groupBaseOption = {
   interval: 300,
   timeout: 3000,
@@ -181,16 +91,10 @@ ruleProviders.set("applications", {
 });
 const rules = ["RULE-SET,applications,下载软件"];
 
-// 程序入口
 function main(config) {
   const proxyCount = config?.proxies?.length ?? 0;
-  const proxyProviderCount =
-    typeof config?.["proxy-providers"] === "object"
-      ? Object.keys(config["proxy-providers"]).length
-      : 0;
-  if (proxyCount === 0 && proxyProviderCount === 0) {
-    throw new Error("配置文件中未找到任何代理");
-  }
+  const proxyProviderCount = typeof config?.["proxy-providers"] === "object" ? Object.keys(config["proxy-providers"]).length : 0;
+  if (proxyCount === 0 && proxyProviderCount === 0) throw new Error("配置文件中未找到任何代理");
 
   let regionProxyGroups = [];
   let otherProxyGroups = config.proxies.map((b) => b.name);
@@ -208,15 +112,7 @@ function main(config) {
   config["geodata-loader"] = "memconservative";
   config["geo-auto-update"] = true;
   config["geo-update-interval"] = 24;
-  config["sniffer"] = {
-    enable: true,
-    "force-dns-mapping": true,
-    "parse-pure-ip": true,
-    "override-destination": false,
-    sniff: { TLS: { ports: [443, 8443] }, HTTP: { ports: [80, "8080-8880"] }, QUIC: { ports: [443, 8443] } },
-    "force-domain": [],
-    "skip-domain": ["Mijia Cloud", "+.oray.com"],
-  };
+  config["sniffer"] = { enable: true, "force-dns-mapping": true, "parse-pure-ip": true, "override-destination": false, sniff: { TLS: { ports: [443, 8443] }, HTTP: { ports: [80, "8080-8880"] }, QUIC: { ports: [443, 8443] } }, "force-domain": [], "skip-domain": ["Mijia Cloud", "+.oray.com"] };
   config["ntp"] = { enable: true, "write-to-system": false, server: "cn.ntp.org.cn" };
 
   if (!enable) return config;
@@ -224,8 +120,7 @@ function main(config) {
   regionOptions.regions.forEach((region) => {
     let proxies = config.proxies
       .filter((a) => {
-        const multiplier =
-          /(?<=[xX✕✖⨉倍率])([1-9]+(\.\d+)*|0{1}\.\d+)(?=[xX✕✖⨉倍率])*/i.exec(a.name)?.[1];
+        const multiplier = /(?<=[xX✕✖⨉倍率])([1-9]+(\.\d+)*|0{1}\.\d+)(?=[xX✕✖⨉倍率])*/i.exec(a.name)?.[1];
         return a.name.match(region.regex) && parseFloat(multiplier || "0") <= region.ratioLimit;
       })
       .map((b) => b.name);
@@ -262,107 +157,57 @@ function main(config) {
   if (ruleOptions.openai) {
     rules.push(...popularAIDomains);
     rules.push("DOMAIN-SUFFIX,grazie.ai,国外AI","DOMAIN-SUFFIX,grazie.aws.intellij.net,国外AI","RULE-SET,ai,国外AI");
-    ruleProviders.set("ai", {
-      ...ruleProviderCommon,
-      behavior: "domain",
-      format: "mrs",
-      url: "https://fastly.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/ai.mrs",
-      path: "./ruleset/DustinWin/ai.mrs",
-    });
-    config["proxy-groups"].push({
-      ...groupBaseOption,
-      name: "国外AI",
-      type: "select",
-      proxies: ["默认节点", ...proxyGroupsRegionNames, "直连"],
-      url: "https://chat.openai.com/cdn-cgi/trace",
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png",
-    });
+    ruleProviders.set("ai", { ...ruleProviderCommon, behavior: "domain", format: "mrs", url: "https://fastly.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/ai.mrs", path: "./ruleset/DustinWin/ai.mrs" });
+    config["proxy-groups"].push({ ...groupBaseOption, name: "国外AI", type: "select", proxies: ["默认节点","台日新韩", ...proxyGroupsRegionNames, "直连"], url: "https://chat.openai.com/cdn-cgi/trace", icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png" });
   }
 
   if (ruleOptions.tiktok) {
     rules.push("GEOSITE,tiktok,Tiktok");
-    config["proxy-groups"].push({
-      ...groupBaseOption,
-      name: "Tiktok",
-      type: "select",
-      proxies: ["默认节点", ...proxyGroupsRegionNames, "直连"],
-      url: "https://www.tiktok.com/",
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png",
-    });
+    config["proxy-groups"].push({ ...groupBaseOption, name: "Tiktok", type: "select", proxies: ["默认节点","台日新韩", ...proxyGroupsRegionNames, "直连"], url: "https://www.tiktok.com/", icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png" });
   }
 
   if (ruleOptions.tracker) {
     rules.push("GEOSITE,tracker,跟踪分析");
-    config["proxy-groups"].push({
-      ...groupBaseOption,
-      name: "跟踪分析",
-      type: "select",
-      proxies: ["REJECT", "直连", "默认节点"],
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Reject.png",
-    });
+    config["proxy-groups"].push({ ...groupBaseOption, name: "跟踪分析", type: "select", proxies: ["REJECT", "直连", "默认节点"], icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Reject.png" });
   }
 
   if (ruleOptions.ads) {
     rules.push("GEOSITE,category-ads-all,广告过滤");
-    config["proxy-groups"].push({
-      ...groupBaseOption,
-      name: "广告过滤",
-      type: "select",
-      proxies: ["REJECT", "直连", "默认节点"],
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Advertising.png",
-    });
+    config["proxy-groups"].push({ ...groupBaseOption, name: "广告过滤", type: "select", proxies: ["REJECT", "直连", "默认节点"], icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Advertising.png" });
   }
 
   rules.push("GEOSITE,private,DIRECT","GEOIP,private,DIRECT,no-resolve","GEOIP,CN,国内网站,no-resolve","MATCH,其他外网");
 
   config["proxy-groups"].push(
-    {
-      ...groupBaseOption,
-      name: "下载软件",
-      type: "select",
-      proxies: ["直连","REJECT","默认节点","国内网站",...proxyGroupsRegionNames],
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Download.png",
-    },
-    {
-      ...groupBaseOption,
-      name: "其他外网",
-      type: "select",
-      proxies: ["直连","默认节点","国内网站",...proxyGroupsRegionNames],
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Streaming!CN.png",
-    },
-    {
-      ...groupBaseOption,
-      name: "国内网站",
-      type: "select",
-      proxies: ["直连","默认节点",...proxyGroupsRegionNames],
-      url: "http://wifi.vivo.com.cn/generate_204",
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/StreamingCN.png",
-    }
+    { ...groupBaseOption, name: "下载软件", type: "select", proxies: ["直连","REJECT","默认节点","国内网站","台日新韩",...proxyGroupsRegionNames], icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Download.png" },
+    { ...groupBaseOption, name: "其他外网", type: "select", proxies: ["直连","默认节点","国内网站","台日新韩",...proxyGroupsRegionNames], icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Streaming!CN.png" },
+    { ...groupBaseOption, name: "国内网站", type: "select", proxies: ["直连","默认节点",...proxyGroupsRegionNames], url: "http://wifi.vivo.com.cn/generate_204", icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/StreamingCN.png" }
   );
 
-  config["proxy-groups"] = config["proxy-groups"].concat(regionProxyGroups);
-
-  // === 新增 台日新韩 节点组合（含 SG 新加坡） ===
-  config["proxy-groups"].push({
+  // === 新增 台日新韩 节点组合 ===
+  const taiRiXinHanGroup = {
     ...groupBaseOption,
     name: "台日新韩",
-    type: "url-test", // 想手動選就改成 "select"
+    type: "url-test",
     tolerance: 50,
-    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Asia.png",
+    icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AmyTelecom.png",
     proxies: ["TW台湾","JP日本","KR韩国","SG新加坡"],
-  });
+  };
+
+  let hkIndex = regionProxyGroups.findIndex(g => g.name === "HK香港");
+  if (hkIndex === -1) {
+    regionProxyGroups.unshift(taiRiXinHanGroup);
+  } else {
+    regionProxyGroups.splice(hkIndex, 0, taiRiXinHanGroup);
+  }
+
+  config["proxy-groups"] = config["proxy-groups"].concat(regionProxyGroups);
 
   config["rules"] = rules;
   config["rule-providers"] = Object.fromEntries(ruleProviders);
 
   if (otherProxyGroups.length > 0) {
-    config["proxy-groups"].push({
-      ...groupBaseOption,
-      name: "其他节点",
-      type: "select",
-      proxies: otherProxyGroups,
-      icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/World_Map.png",
-    });
+    config["proxy-groups"].push({ ...groupBaseOption, name: "其他节点", type: "select", proxies: otherProxyGroups, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/World_Map.png" });
   }
   return config;
 }
